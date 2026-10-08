@@ -4,19 +4,23 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "mastra dev",
-    "build": "mastra build",
-    "start": "mastra start",
+    "dev": "node --watch src/server.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/server.js",
     "typecheck": "tsc --noEmit",
-    "test": "node --test src/config/environment.test.ts src/database/client.test.ts",
-    "db:migrate": "node src/database/migrate.ts"
+    "test": "node --test src/app.test.ts src/shared/config/environment.test.ts src/shared/database/client.test.ts src/domains/health/health.test.ts",
+    "db:migrate": "node src/shared/database/migrate.ts",
+    "studio": "mastra studio --server-port 4111 --server-api-prefix /ai/api"
   },
   "dependencies": {
     "@electric-sql/pglite": "0.5.8",
     "@mastra/core": "1.75.0",
     "zod": "4.6.5",
     "kysely": "0.29.6",
-    "pg": "8.23.1"
+    "pg": "8.23.1",
+    "hono": "4.13.13",
+    "@hono/node-server": "1.19.17",
+    "@mastra/hono": "1.7.17"
   },
   "devDependencies": {
     "@types/node": "24.19.1",

@@ -5,7 +5,8 @@ import { join } from "node:path";
 import { test } from "node:test";
 import { sql } from "kysely";
 import { Migrator } from "kysely/migration";
-import { DATABASE_KIND, parseEnvironment } from "../config/environment.ts";
+import { DATABASE_KIND } from "../config/constants.ts";
+import { parseEnvironment } from "../config/environment.ts";
 import { createDatabase } from "./client.ts";
 
 test("PGlite persists data, rolls back transactions, and reuses migration history", async () => {

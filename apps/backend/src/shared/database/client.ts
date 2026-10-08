@@ -3,7 +3,8 @@ import { resolve } from "node:path";
 import { PGlite } from "@electric-sql/pglite";
 import { Kysely, PGliteDialect, PostgresDialect } from "kysely";
 import pg from "pg";
-import { DATABASE_KIND, type Environment } from "../config/environment.ts";
+import { DATABASE_KIND } from "../config/constants.ts";
+import type { Environment } from "../config/environment.ts";
 import type { Database } from "./schema.ts";
 
 export function createDatabase(environment: Environment) {

@@ -1,4 +1,4 @@
-import { apiUrl } from "../config/api";
+import { apiUrl } from "../../shared/config/api";
 
 type HealthResponse = { status: "ok"; database: "pglite" | "postgres" };
 

@@ -10,7 +10,10 @@ export function createMigrator(db: Kysely<Database>) {
     provider: new FileMigrationProvider({
       fs,
       path,
-      migrationFolder: path.resolve(process.cwd(), "src/database/migrations"),
+      migrationFolder: path.resolve(
+        process.cwd(),
+        "src/shared/database/migrations",
+      ),
     }),
   });
 }

@@ -20,7 +20,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".mastra/output/**", "dist/**"],
+      "outputs": ["dist/**"],
       "env": ["EXPO_PUBLIC_API_URL"]
     },
     "typecheck": {

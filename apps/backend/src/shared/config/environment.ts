@@ -3,10 +3,6 @@ import { resolve } from "node:path";
 import { loadEnvFile } from "node:process";
 import { z } from "zod";
 
-export const DATABASE_KIND = {
-  pglite: "pglite",
-  postgres: "postgres",
-} as const;
 const environmentSchema = z.object({
   NODE_ENV: z
     .enum(["development", "test", "production"])
