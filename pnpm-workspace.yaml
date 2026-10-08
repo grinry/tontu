@@ -1,0 +1,8 @@
+packages:
+  - apps/*
+
+saveExact: true
+
+onlyBuiltDependencies:
+  - esbuild
+  - sharp

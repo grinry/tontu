@@ -1,0 +1,27 @@
+{
+  "name": "tontu",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.32.1",
+  "engines": {
+    "node": ">=24.19.0 <25",
+    "pnpm": ">=10 <11"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:backend": "turbo run dev --filter=@tontu/backend",
+    "dev:mobile": "turbo run dev --filter=@tontu/mobile",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "db:migrate": "pnpm --filter @tontu/backend db:migrate"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "turbo": "2.11.7"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@tontu/backend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "mastra dev",
+    "build": "mastra build",
+    "start": "mastra start",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test src/config/environment.test.ts src/database/client.test.ts",
+    "db:migrate": "node src/database/migrate.ts"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "@mastra/core": "1.75.0",
+    "zod": "4.6.5",
+    "kysely": "0.29.6",
+    "pg": "8.23.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.1",
+    "@types/pg": "8.23.1",
+    "mastra": "1.33.0",
+    "typescript": "6.0.3"
+  }
+}

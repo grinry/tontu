@@ -1,0 +1,35 @@
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "env": [
+        "NODE_ENV",
+        "PORT",
+        "HOST",
+        "DATABASE_URL",
+        "PGLITE_DATA_DIR",
+        "MASTRA_MODEL",
+        "OPENAI_API_KEY",
+        "ANTHROPIC_API_KEY",
+        "GOOGLE_GENERATIVE_AI_API_KEY",
+        "GOOGLE_API_KEY",
+        "EXPO_PUBLIC_API_URL"
+      ]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".mastra/output/**", "dist/**"],
+      "env": ["EXPO_PUBLIC_API_URL"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "env": ["NODE_ENV"]
+    }
+  }
+}

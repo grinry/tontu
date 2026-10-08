@@ -1,0 +1,27 @@
+{
+  "name": "@tontu/mobile",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "expo": "57.0.27",
+    "expo-status-bar": "57.0.1",
+    "react": "19.2.3",
+    "react-native": "0.86.3"
+  },
+  "devDependencies": {
+    "@babel/core": "7.29.7",
+    "@types/react": "19.2.18",
+    "typescript": "6.0.3"
+  },
+  "scripts": {
+    "dev": "expo start",
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "build": "expo export --platform all --output-dir dist",
+    "build:ios": "expo run:ios --configuration Release",
+    "build:android": "expo run:android --variant release",
+    "typecheck": "tsc --noEmit"
+  },
+  "private": true
+}
