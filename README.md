@@ -31,7 +31,7 @@ Local development needs no Docker, external database, AI provider, or Mastra run
 
 Optional environment examples live in each app. For a physical phone, set EXPO_PUBLIC_API_URL to your computer's LAN address; the built-in defaults support iOS localhost and the Android emulator's `10.0.2.2`.
 
-Set backend MASTRA_MODEL to `provider/model` plus the provider key to enable AI endpoints under `/ai/api`. With it unset, Mastra is not loaded and the core API still runs. Persistent Mastra conversation/workflow storage is not configured yet.
+Set backend MASTRA_MODEL to `provider/model` plus the provider key to enable AI endpoints under `/ai/api`. With it unset, Mastra is not loaded and the core API still runs. Mastra memory, editor changes, and observability persist locally under `.data/`; with DATABASE_URL set, Mastra uses separate PostgreSQL schemas. See backend infrastructure docs.
 
 ## Documentation
 

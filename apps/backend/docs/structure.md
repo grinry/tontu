@@ -15,13 +15,15 @@ src/
       health.test.ts
     ai/
       index.ts
-      ai.integration.ts        # Mastra runtime + Hono adapter on a child app
+      ai.integration.ts        # Mastra runtime, editor, observability + Hono adapter
+      ai.storage.ts            # Persistent runtime and telemetry storage
+      ai.storage.test.ts       # Storage restart persistence
       agents/assistant.ts
   shared/
     config/                    # Environment loading/validation and database-kind constants
     database/                  # Kysely drivers, schema types, migration CLI and tests
       migrations/
-    http/                      # HTTP status constants and graceful-close helper
+    http/                      # HTTP status constants, Studio origins, graceful-close helper
 ```
 
 `server.ts` creates database infrastructure, injects it into the health repository/service, and passes the service to `createApp`. The route receives the service, not the database. SQL for the health check lives in its repository.

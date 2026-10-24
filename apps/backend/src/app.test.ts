@@ -5,6 +5,30 @@ import { createHealthService } from "./domains/health/index.ts";
 import { DATABASE_KIND } from "./shared/config/constants.ts";
 import { HTTP_STATUS } from "./shared/http/status.ts";
 
+test("Studio detects an enabled AI server through a CORS-enabled root response", async () => {
+  const service = createHealthService({
+    kind: DATABASE_KIND.pglite,
+    ping: async () => {},
+  });
+  const app = createApp(service, { studioEnabled: true });
+  const response = await app.request("/", {
+    headers: { Origin: "http://localhost:3000" },
+  });
+  assert.equal(response.status, HTTP_STATUS.ok);
+  assert.equal(
+    response.headers.get("access-control-allow-origin"),
+    "http://localhost:3000",
+  );
+  const untrusted = await app.request("/", {
+    headers: { Origin: "https://example.com" },
+  });
+  assert.equal(untrusted.headers.get("access-control-allow-origin"), null);
+  assert.equal(
+    (await createApp(service).request("/")).status,
+    HTTP_STATUS.notFound,
+  );
+});
+
 test("application API serves health and does not mount AI by default", async () => {
   const app = createApp(
     createHealthService({ kind: DATABASE_KIND.pglite, ping: async () => {} }),

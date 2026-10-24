@@ -11,7 +11,9 @@ import { closeHttpServer } from "./shared/http/lifecycle.ts";
 
 const environment = loadEnvironment();
 const database = createDatabase(environment);
-const app = createApp(createHealthService(createHealthRepository(database)));
+const app = createApp(createHealthService(createHealthRepository(database)), {
+  studioEnabled: Boolean(environment.MASTRA_MODEL),
+});
 let ai: Awaited<ReturnType<typeof createAiIntegration>> | undefined;
 let server: ServerType | undefined;
 
@@ -26,9 +28,7 @@ async function closeResources() {
 try {
   if (environment.MASTRA_MODEL) {
     const { createAiIntegration } = await import("./domains/ai/index.ts");
-    ai = await createAiIntegration(
-      environment.MASTRA_MODEL as `${string}/${string}`,
-    );
+    ai = await createAiIntegration(environment);
     app.route("/ai", ai.app);
   }
 } catch (error) {

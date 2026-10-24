@@ -11,6 +11,7 @@
         "DATABASE_URL",
         "PGLITE_DATA_DIR",
         "MASTRA_MODEL",
+        "MASTRA_STORAGE_PATH",
         "OPENAI_API_KEY",
         "ANTHROPIC_API_KEY",
         "GOOGLE_GENERATIVE_AI_API_KEY",

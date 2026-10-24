@@ -23,7 +23,7 @@ All three currently have official Mastra adapters. Hono was chosen for its fit a
 - Product domains must not depend on vendor HTTP request context. If a future use case needs AI, define the reused contract in shared code and inject an implementation through composition.
 - Explicitly configured integration startup errors fail startup; disabled AI does not affect core API availability. Runtime health checks query the application database, not an AI provider.
 
-Persistent Mastra conversation/workflow storage is not configured. Application database persistence through Kysely is separate from Mastra's own storage system.
+Mastra memory, editor versions, and observability use persistent storage independently from application database persistence through Kysely. See [infrastructure](./infrastructure.md) and [database](./database.md).
 
 ## References
 

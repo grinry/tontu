@@ -11,6 +11,7 @@
     "dev": "turbo run dev",
     "dev:backend": "turbo run dev --filter=@tontu/backend",
     "dev:mobile": "turbo run dev --filter=@tontu/mobile",
+    "dev:studio": "pnpm --filter @tontu/backend studio",
     "build": "turbo run build",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",

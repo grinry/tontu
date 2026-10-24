@@ -6,7 +6,7 @@ Kysely uses its built-in PGlite dialect locally and the pg/PostgreSQL dialect wh
 
 Local PGlite stores data at apps/backend/.data/pglite by default, with parent directories created on first use. A data directory belongs to one process: stop the backend before applying migrations against that same directory. Tests create their own temporary directories and clean them up. PostgreSQL-specific extensions/concurrency/production behavior must still be validated against actual PostgreSQL.
 
-Application storage is independent from Mastra conversation/workflow storage, which has not been configured.
+Application storage is independent from Mastra runtime storage. Locally, libSQL persists memory and editor versions at MASTRA_STORAGE_PATH (default `.data/mastra.db`), and DuckDB persists observability at that path plus `.observability.duckdb`. With DATABASE_URL set, PostgresStoreVNext uses the `mastra` and `mastra_observability` schemas. Mastra initializes its own tables; they are not application Kysely migrations. The telemetry connection currently uses the same database through a separate pool; consider a dedicated telemetry database as load grows.
 
 ## Schema and migrations
 

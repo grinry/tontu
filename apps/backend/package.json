@@ -8,19 +8,25 @@
     "build": "tsc -p tsconfig.build.json",
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit",
-    "test": "node --test src/app.test.ts src/shared/config/environment.test.ts src/shared/database/client.test.ts src/domains/health/health.test.ts",
+    "test": "node --test src/app.test.ts src/shared/config/environment.test.ts src/shared/database/client.test.ts src/domains/health/health.test.ts src/domains/ai/ai.storage.test.ts",
     "db:migrate": "node src/shared/database/migrate.ts",
     "studio": "mastra studio --server-port 4111 --server-api-prefix /ai/api"
   },
   "dependencies": {
     "@electric-sql/pglite": "0.5.8",
+    "@hono/node-server": "1.19.17",
     "@mastra/core": "1.75.0",
-    "zod": "4.6.5",
+    "@mastra/duckdb": "1.13.0",
+    "@mastra/editor": "0.16.0",
+    "@mastra/hono": "1.7.17",
+    "@mastra/libsql": "1.25.1",
+    "@mastra/memory": "1.36.0",
+    "@mastra/observability": "1.18.4",
+    "@mastra/pg": "1.30.0",
+    "hono": "4.13.13",
     "kysely": "0.29.6",
     "pg": "8.23.1",
-    "hono": "4.13.13",
-    "@hono/node-server": "1.19.17",
-    "@mastra/hono": "1.7.17"
+    "zod": "4.6.5"
   },
   "devDependencies": {
     "@types/node": "24.19.1",

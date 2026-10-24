@@ -15,6 +15,7 @@ const environmentSchema = z.object({
     .regex(/^postgres(?:ql)?:\/\//)
     .optional(),
   PGLITE_DATA_DIR: z.string().min(1).default("./.data/pglite"),
+  MASTRA_STORAGE_PATH: z.string().min(1).default("./.data/mastra.db"),
   MASTRA_MODEL: z
     .string()
     .regex(/^[^/]+\/.+$/)
