@@ -2,7 +2,7 @@
 
 ## Toolchain and commands
 
-The app uses Expo SDK 57, React Native, strict TypeScript, and repository Biome configuration. Use Node 24.19.0 and pnpm 10.32.1. Check matching Expo SDK docs before changing framework/native APIs and use `pnpm exec expo install` for SDK-compatible dependencies after any required approval.
+The app uses Expo SDK 57, React Native, strict TypeScript, and repository Biome configuration. Use Node 26.12.1 and pnpm 10.32.1. Check matching Expo SDK docs before changing framework/native APIs and use `pnpm exec expo install` for SDK-compatible dependencies after any required approval.
 
 | Command from repository root | Behavior |
 | --- | --- |
@@ -24,7 +24,7 @@ The health feature calls `GET /v1/health`, validates its response, and displays 
 
 ## Native/cloud builds
 
-app.json currently uses `com.grinry.tontu` for iOS/Android bundle identifiers. Confirm identifiers before registering the app. eas.json has preview/internal-distribution and production profiles, but no Expo/EAS project or signing credentials have been linked.
+app.json currently uses `com.grinry.tontu` for iOS/Android bundle identifiers. Confirm identifiers before registering the app. eas.json has preview/internal-distribution and production profiles that extend a `base` profile, but no Expo/EAS project or signing credentials have been linked. `base` pins EAS Build to Node 26.12.1 and pnpm 10.32.1 because EAS does not read the repository's `.nvmrc` and its default images ship an older Node; keep these values equal to `.nvmrc` and `packageManager`, and make new build profiles extend `base`.
 
 For cloud builds, link the project to an Expo account and configure credentials, then run EAS CLI from the mobile app directory. Add a development-build profile when custom native modules or that workflow is needed. Expo Go includes only its bundled modules.
 

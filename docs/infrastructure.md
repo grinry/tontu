@@ -2,7 +2,7 @@
 
 ## Toolchain and task orchestration
 
-Use Node 24.19.0 (`.nvmrc`, `.node-version`) and pnpm 10.32.1 (`packageManager`). Dependencies are exact and managed by one root pnpm-lock.yaml. Use `pnpm install --frozen-lockfile` for reproducible installs. Obtain approval for new production dependencies and keep the package manager consistent.
+Use Node 26.12.1 (`.nvmrc`, `.node-version`) and pnpm 10.32.1 (`packageManager`). Switch Node versions with `nvm use` from the repository root, which reads `.nvmrc`; `engines` rejects other major versions. Keep the pin on a patched release of the active LTS line when Node.js publishes security releases. Dependencies are exact and managed by one root pnpm-lock.yaml. Use `pnpm install --frozen-lockfile` for reproducible installs. Obtain approval for new production dependencies and keep the package manager consistent.
 
 pnpm workspaces discover `apps/*`. When a real shared package is introduced, add `packages/*` to pnpm-workspace.yaml and document its ownership. Turborepo runs development, builds, type checks, and tests. Development tasks are uncached/persistent; build artifacts live in each app's `dist/`. Environment variables consumed by tasks must be declared in turbo.json; public mobile configuration participates in build hashing.
 

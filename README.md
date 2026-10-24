@@ -4,7 +4,7 @@ pnpm workspaces + Turborepo, with an independent Hono API backend and Expo mobil
 
 ## Start
 
-Use Node **24.19.0** and pnpm **10.32.1** (pinned):
+Use Node **26.12.1** and pnpm **10.32.1** (pinned):
 
 ```sh
 nvm use

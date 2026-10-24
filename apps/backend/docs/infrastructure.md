@@ -2,7 +2,7 @@
 
 ## Commands
 
-Run from the repository root with Node 24.19.0 and pnpm 10.32.1:
+Run from the repository root with Node 26.12.1 and pnpm 10.32.1:
 
 | Command | Behavior |
 | --- | --- |

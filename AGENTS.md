@@ -9,7 +9,7 @@
 
 ## Working rules
 
-- Use pnpm 10.32.1 and Node 24.19.0. Pin dependency versions and use the root lockfile. Do not mix package managers.
+- Use pnpm 10.32.1 and Node 26.12.1 (switch with `nvm use`, which reads `.nvmrc`). Pin dependency versions and use the root lockfile. Do not mix package managers.
 - Ask before adding production dependencies or committing, unless the human has already explicitly authorized that action for the task.
 - Follow [coding rules](./docs/coding-rules.md): domain boundaries, shared code ownership, const patterns, and documentation maintenance.
 - Features belong to domains. A domain must not import another domain, including through barrel exports, aliases, dynamic imports, or type-only imports. Reused features belong in app-local `shared/` or an actual shared workspace package.
