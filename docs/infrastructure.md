@@ -14,7 +14,7 @@ The backend owns a Hono HTTP server on port 4111 by default. Its application API
 
 Mobile runs through Expo and calls the backend's application API. Each app has its own environment/build configuration and deployment lifecycle. Keep backend provider/database credentials out of mobile and public variables.
 
-Local development uses persistent PGlite without Docker. Production backend deployments require PostgreSQL via DATABASE_URL. The local PGlite directory belongs to one process; stop that process before running migrations. See [backend infrastructure](../apps/backend/docs/infrastructure.md) and [database operations](../apps/backend/docs/database.md).
+Local development uses persistent PGlite without Docker. The optional [Compose workflow](../apps/backend/docs/infrastructure.md#local-services-with-orbstack) runs backend dependencies on OrbStack or Docker. Production backend deployments require PostgreSQL via DATABASE_URL. The local PGlite directory belongs to one process; stop that process before running migrations. See [backend infrastructure](../apps/backend/docs/infrastructure.md) and [database operations](../apps/backend/docs/database.md).
 
 No cloud backend/database provider, CI workflow, production domain, or EAS project has been configured yet. Document those choices here and in the owning app when introduced.
 

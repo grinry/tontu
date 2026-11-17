@@ -2,6 +2,8 @@
 
 ## Drivers and storage ownership
 
+To exercise the PostgreSQL driver locally, follow the [OrbStack setup](./infrastructure.md#local-services-with-orbstack).
+
 Kysely uses its built-in PGlite dialect locally and the pg/PostgreSQL dialect when DATABASE_URL is set. Production requires DATABASE_URL; it cannot silently fall back to PGlite. Configure verified TLS using the production provider's connection URL. The PostgreSQL pool currently allows ten connections and has a ten-second connection timeout.
 
 Local PGlite stores data at apps/backend/.data/pglite by default, with parent directories created on first use. A data directory belongs to one process: stop the backend before applying migrations against that same directory. Tests create their own temporary directories and clean them up. PostgreSQL-specific extensions/concurrency/production behavior must still be validated against actual PostgreSQL.

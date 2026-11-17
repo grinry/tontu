@@ -16,6 +16,26 @@ Run from the repository root with Node 26.12.1 and pnpm 10.32.1:
 
 The server build is ordinary TypeScript output, not `mastra build`. Production requires the compiled dist/ directory, package metadata, and production dependencies. Run from the backend app directory so relative configuration paths stay consistent. Run migrations from a source checkout with the tooling dependencies before starting the server.
 
+## Local services with OrbStack
+
+Run the API on your host with Node watch mode. The repository's `compose.yaml` runs backend dependencies, starting with PostgreSQL. On macOS, [install and open OrbStack](https://docs.orbstack.dev/quick-start) and run `docker context show` to confirm the active engine. OrbStack provides the [`orbstack` Docker context](https://docs.orbstack.dev/docker/). To select it for this shell only, run `export DOCKER_CONTEXT=orbstack`. Docker Desktop and Linux Docker Engine with Compose also work.
+
+From the repository root, run these commands in one terminal:
+
+```sh
+nvm use
+docker compose up -d --wait postgres
+export DATABASE_URL=postgresql://tontu:tontu_local@127.0.0.1:55432/tontu
+pnpm db:migrate
+pnpm dev:backend
+```
+
+From another terminal, run `curl -fsS http://localhost:4111/v1/health`. Expect `{"status":"ok","database":"postgres"}`. The database port binds to loopback. If port 55432 is occupied, export `TONTU_POSTGRES_PORT` before starting Compose and use the same port in `DATABASE_URL`. The example password is for this local database only.
+
+Use `docker compose ps` to inspect service health and `docker compose logs postgres` for startup errors. Stop the backend with Ctrl-C and run `docker compose down`. The named volume retains PostgreSQL data for the next start. To return to PGlite, unset `DATABASE_URL` in the launching shell, remove any corresponding backend `.env` override, and restart the backend. Each database keeps its own data.
+
+When a feature needs Redis or another service, add it under `services` in the root Compose file. Use a pinned image and loopback port, and start it by service name. The host backend connects through the published port.
+
 ## Environment
 
 An optional backend .env is loaded using Node's built-in loader; existing process variables take precedence. Use .env.example as the starting point.

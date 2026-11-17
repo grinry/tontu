@@ -1,0 +1,20 @@
+name: tontu-dev
+services:
+  postgres:
+    image: postgres:17-alpine@sha256:c7526c0f6c3f30260a563d7bcf8ad778effac59a44f8ffa86678c35418338609
+    environment:
+      POSTGRES_DB: tontu
+      POSTGRES_USER: tontu
+      POSTGRES_PASSWORD: tontu_local
+    ports:
+      - "127.0.0.1:${TONTU_POSTGRES_PORT:-55432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tontu -d tontu"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  postgres-data:

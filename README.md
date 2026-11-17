@@ -14,7 +14,7 @@ pnpm dev
 
 The API runs at `http://localhost:4111`. Expo prints device/simulator options. The mobile **Check backend** button calls `GET /v1/health` through the backend's route → service → repository layers.
 
-Local development needs no Docker, external database, AI provider, or Mastra runtime. PGlite persists locally in apps/backend/.data/pglite. Production requires PostgreSQL via DATABASE_URL.
+Local development needs no Docker, external database, AI provider, or Mastra runtime. PGlite persists locally in apps/backend/.data/pglite. Production requires PostgreSQL via DATABASE_URL. For local PostgreSQL, follow the [OrbStack and Compose setup](./apps/backend/docs/infrastructure.md#local-services-with-orbstack).
 
 ## Commands
 
